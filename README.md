@@ -12,3 +12,10 @@ docker run -it --rm -p 8080:8080 \
   -v $(pwd)/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro \
   -v $(pwd)/lua:/lua:ro \
   openresty/openresty:alpine
+
+## Example
+```bash
+curl -X POST http://localhost:8080/webhook1 \
+  -H "Content-Type: application/json" \
+  -H "X-Hub-Signature-256: sha256=dummy" \
+  -d '{"repository":{"name":"test-repo"}}'
